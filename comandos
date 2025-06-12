@@ -28,12 +28,12 @@ show collections;
 // Descrição: Insere um ou mais documentos em uma coleção especificada.
 db.IFSP.insertMany([
     {
-        "nome": "Caio Petiz",
-        "email": "caio.petiz@ifsp.edu.br"
+        "nome": "Bianca Galdino",
+        "email": "byancca.galdino@gmail.com"
     },
     {
-        "nome": "Livia Teixeira",
-        "email": "livia.teixeira@email.com"
+        "nome": "Karol Gotto",
+        "email": "karoloarchive@gmail.com"
     }
 ]);
 
