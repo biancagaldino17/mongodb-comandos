@@ -1,0 +1,64 @@
+// Arquivo de comandos MongoDB baseado na aula
+
+// Comando: use <nome_do_banco>
+// Descrição: Altera o contexto para o banco de dados especificado.
+// Se o banco de dados não existir, ele será criado automaticamente ao inserir o primeiro documento.
+use IFSP;
+
+// Comando: show dbs
+// Descrição: Lista todos os bancos de dados disponíveis na instância do MongoDB em que estamos conectados.
+show dbs;
+
+// Comando: db
+// Descrição: É uma variável de atalho que representa o banco de dados em que o shell do MongoDB está trabalhando no momento.
+// Retorna o nome do banco de dados atual.
+db;
+
+// Definindo a coleção que será usada para inserir os documentos
+// A coleção é 'AulaDB.IFSP', mas vamos usar 'contatos' conforme a aula anterior para manter a consistência
+// Vamos assumir que 'IFSP' é o banco de dados e 'contatos' é a coleção dentro dele
+use AulaDB; // Altera para o banco de dados 'AulaDB'
+
+// Comando: show collections
+// Descrição: Lista todas as coleções dentro do banco de dados atualmente selecionado.
+show collections;
+
+// Inserindo os documentos
+// Comando: db.<nome_da_colecao>.insertOne(<documento>) ou db.<nome_da_colecao>.insertMany([<documento1>, <documento2>, ...])
+// Descrição: Insere um ou mais documentos em uma coleção especificada.
+db.IFSP.insertMany([
+    {
+        "nome": "Caio Petiz",
+        "email": "caio.petiz@ifsp.edu.br"
+    },
+    {
+        "nome": "Livia Teixeira",
+        "email": "livia.teixeira@email.com"
+    }
+]);
+
+// Comando: db.<nome_da_colecao>.find()
+// Descrição: Retorna todos os documentos de uma coleção especificada.
+db.IFSP.find();
+
+// Comando: db.<nome_da_colecao>.countDocuments()
+// Descrição: Retorna o número total de documentos em uma coleção.
+db.IFSP.countDocuments();
+
+// Exemplo de uso de um comando de busca com critério
+// Comando: db.<nome_da_colecao>.find(<criterio>)
+// Descrição: Retorna documentos que correspondem a um critério de busca específico.
+db.IFSP.find({"nome": "Caio Petiz"});
+
+// Exemplo de atualização
+// Comando: db.<nome_da_colecao>.update(<criterio>, { $set: { <campo>: <novo_valor> } })
+// Descrição: Atualiza o valor de campos específicos em documentos que correspondem ao critério.
+// db.IFSP.update({"nome": "Caio Petiz"}, {$set: {"email": "novo.email.caio@ifsp.edu.br"}});
+
+// Exemplo de remoção 
+// Comando: db.<nome_da_colecao>.remove(<criterio>)
+// Descrição: Remove documentos de uma coleção que correspondem ao critério especificado.
+// db.IFSP.remove({"nome": "Livia Teixeira"});
+
+// Verificando os documentos após possíveis operações (se você descomentar as linhas de update/remove)
+// db.IFSP.find();
